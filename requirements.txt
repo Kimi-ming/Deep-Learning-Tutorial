@@ -1,0 +1,5 @@
+# Core dependencies
+numpy>=1.19.0,<2.0
+
+# Optional dependencies for visualization
+matplotlib>=3.3.0
