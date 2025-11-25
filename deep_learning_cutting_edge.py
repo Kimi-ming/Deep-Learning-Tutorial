@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-# 前沿深度学习架构
+"""
+前沿深度学习架构 - Transformer、ViT、EfficientNet、MoE
+
+包含：Transformer详细实现、Vision Transformer、EfficientNet、混合专家模型等前沿架构。
+"""
 # Cutting-Edge Deep Learning Architectures: 最新架构实现与原理
 
 import random

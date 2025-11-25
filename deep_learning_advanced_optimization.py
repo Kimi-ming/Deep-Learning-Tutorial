@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
-# 深度学习高级优化算法
-# Advanced Optimization for Deep Learning: 前沿优化技术与实现
+"""
+深度学习高级优化算法 - Adam、RMSprop、学习率调度
+
+包含：Adam优化器、RMSprop、学习率衰减、批归一化、Dropout等优化技术。
+"""
 
 import random
 import math

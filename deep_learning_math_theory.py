@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-# 深度学习数学原理深度解析
+"""
+深度学习数学原理深度解析 - 微积分、信息论、优化理论
+
+包含：链式法则、信息论、高级优化、变分推断、流形学习、正则化理论等数学基础。
+"""
 # Mathematical Foundations of Deep Learning: 深入理解数学基础
 
 import random

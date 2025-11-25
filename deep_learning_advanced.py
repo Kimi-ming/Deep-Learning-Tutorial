@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
-# 深度学习高级主题
-# Advanced Deep Learning Topics: 探索前沿技术
+"""
+深度学习高级主题 - GAN、Transformer、强化学习、元学习
+
+包含：生成对抗网络、Transformer架构、深度强化学习、元学习等前沿技术。
+"""
 
 import random
 import math
