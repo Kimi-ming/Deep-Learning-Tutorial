@@ -27,22 +27,22 @@
 ## 🟠 Phase 2: 包结构与入口 (依赖 Phase 1)
 
 ### 设计文档
-- [ ] 创建 docs/ARCHITECTURE.md
+- [x] 创建 docs/ARCHITECTURE.md
   - 定义 `deep_learning/` 包结构
   - 子模块划分: utils/fundamentals/architectures/optimizers/advanced
   - 导入路径约定 (避免后续重构破坏)
   - 迁移计划与依赖关系
 
 ### 最小入口
-- [ ] 创建 main.py (CLI/交互式菜单)
+- [x] 创建 main.py (CLI/交互式菜单)
   - 动态发现并列出当前所有可执行的教学模块
   - 支持数字选择运行
   - 最小可运行示例
 
 ### 配套文档
-- [ ] 更新 DEEP_LEARNING_GUIDE.md (与包结构/入口保持一致)
-- [ ] 创建 CONTRIBUTING.md (环境搭建、格式化、测试命令)
-- [ ] 创建 FAQ.md (依赖安装、环境问题、常见错误)
+- [x] 更新 DEEP_LEARNING_GUIDE.md (与包结构/入口保持一致)
+- [x] 创建 CONTRIBUTING.md (环境搭建、格式化、测试命令)
+- [x] 创建 FAQ.md (依赖安装、环境问题、常见错误)
 
 ---
 
@@ -337,5 +337,5 @@
 ---
 
 **最后更新:** 2024-11-25
-**当前 Phase:** Phase 1 已完成 ✓ | Phase 2 进行中
-**总体进度:** 12% (10/83项核心任务已完成)
+**当前 Phase:** Phase 2 已完成 ✓ | Phase 3 待开始
+**总体进度:** 18% (15/83项核心任务已完成)

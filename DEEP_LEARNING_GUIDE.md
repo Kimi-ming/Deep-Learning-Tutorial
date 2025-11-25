@@ -2,34 +2,53 @@
 
 ## 📖 简介
 
-本项目现在包含了完整的深度学习教程，在原有的机器学习算法基础上，新增了深度学习专区，帮助您从机器学习平滑过渡到深度学习。
+本项目提供纯 Python 实现的深度学习教程，不依赖 TensorFlow/PyTorch 等框架，帮助您深入理解深度学习的核心原理和底层实现。
 
 ## 🚀 快速开始
 
-### 方法1: 通过主程序访问（推荐）
+### 方法1: 交互式菜单（推荐）
 
 ```bash
 python main.py
 ```
 
-在主菜单中选择 `13. 深度学习教程 (Deep Learning)` 进入深度学习专区。
+进入交互式菜单，可以浏览和运行所有教学模块。菜单提供：
+- 动态发现所有可用的教学模块
+- 数字选择快速运行
+- 模块详细信息查看
+- 友好的用户界面
 
-### 方法2: 直接运行深度学习模块
+### 方法2: 命令行模式
 
 ```bash
-# 深度学习基础概念
+# 查看帮助
+python main.py --help
+
+# 列出所有可用模块
+python main.py --list
+
+# 直接运行指定模块
+python main.py fundamentals
+python main.py cnn
+python main.py rnn
+```
+
+### 方法3: 直接运行模块文件
+
+```bash
+# 深度学习基础
 python deep_learning_fundamentals.py
 
-# 卷积神经网络教程
+# 卷积神经网络
 python deep_learning_cnn.py
 
-# 循环神经网络教程
+# 循环神经网络
 python deep_learning_rnn.py
 
-# 深度学习实践练习
+# 实践练习
 python deep_learning_exercises.py
 
-# 高级主题和前沿技术
+# 高级主题
 python deep_learning_advanced.py
 ```
 
