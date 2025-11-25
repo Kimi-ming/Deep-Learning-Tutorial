@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
-# 深度学习基础教程
-# Deep Learning Fundamentals: 从神经网络到深度学习
+"""
+深度学习基础教程 - 从神经网络到深度学习
+
+包含：感知机、多层感知机、激活函数、损失函数、优化算法等基础概念。
+"""
 
 import random
 import math

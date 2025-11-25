@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
-# 深度学习教程 - 循环神经网络 (RNN)
-# Recurrent Neural Networks: 专门处理序列数据的深度学习架构
+"""
+循环神经网络 (RNN) - 专门处理序列数据的深度学习架构
+
+包含：RNN、LSTM、GRU、序列建模、梯度裁剪等概念。
+"""
 
 import random
 import math

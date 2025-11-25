@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-# 深度学习高级实践项目
+"""
+深度学习高级实践项目 - NAS、VAE、元学习
+
+包含：神经网络架构搜索、变分自编码器、元学习等挑战性项目实现。
+"""
 # Advanced Deep Learning Projects: 挑战性项目实现
 
 import random

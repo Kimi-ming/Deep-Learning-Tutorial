@@ -34,9 +34,12 @@ def discover_modules():
         # 尝试导入模块获取描述
         try:
             module = importlib.import_module(module_name)
-            description = getattr(module, '__doc__', '').strip().split('\n')[0] if hasattr(module, '__doc__') else "无描述"
-        except Exception:
-            description = "模块加载失败"
+            # 安全处理 __doc__，避免 None.strip() 异常
+            doc = module.__doc__ if hasattr(module, '__doc__') and module.__doc__ else ''
+            description = doc.strip().split('\n')[0] if doc.strip() else "无描述"
+        except Exception as e:
+            # 输出真实异常以便调试
+            description = f"模块加载失败: {type(e).__name__}"
 
         modules.append((module_name, file_path, description))
 
