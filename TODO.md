@@ -69,8 +69,8 @@
 - [x] tests/test_rnn.py (隐藏状态形状、权重初始化、激活函数)
 
 ### 预留测试任务 (Phase 4-6 新增功能的测试，仅标记待实现，不创建文件)
-- [ ] tests/utils/test_activations.py (Phase 4 实现时补充: 边界测试、数值稳定性)
-- [ ] tests/utils/test_losses.py (Phase 4 实现时补充: epsilon处理、梯度验证)
+- [x] tests/utils/test_activations.py (Phase 4 已实现: 32个测试覆盖边界、数值稳定性)
+- [x] tests/utils/test_losses.py (Phase 4 已实现: 18个测试覆盖epsilon处理、梯度验证)
 - [ ] tests/utils/test_visualization.py (Phase 6 实现时补充: matplotlib可用/不可用场景)
 - [ ] tests/test_data_loader.py (Phase 6 实现时补充: MNIST/文本加载、形状验证)
 - [ ] tests/test_examples.py (Phase 6 实现时补充: examples/ 下示例能运行不报错)
@@ -103,7 +103,7 @@
 - [x] 重构 deep_learning_rnn.py 使用 utils
   - 使用 normal 替换权重初始化
   - 使用 tanh, softmax, matrix_vector_multiply
-  - 导入 clip_gradients (已准备好供使用)
+  - 导入 clip_gradients (注: 已导入但未应用到训练循环,留待 Phase 5 迁移时完善)
 - [x] 减少重复代码约 45 行
 - [x] 保持向后兼容 API
 
