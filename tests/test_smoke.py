@@ -33,7 +33,6 @@ class TestModuleImports:
         assert len(module_files) > 0, "应该至少有一个教学模块"
 
         print(f"\n发现 {len(module_files)} 个教学模块")
-        return module_files
 
     def test_import_all_modules(self):
         """测试所有模块可以成功导入"""
