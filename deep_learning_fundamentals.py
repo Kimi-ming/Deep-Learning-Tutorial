@@ -9,6 +9,13 @@ import random
 import math
 import json
 
+# 导入 utils 工具函数
+from deep_learning.utils import (
+    relu, relu_derivative,
+    leaky_relu,
+    he_normal
+)
+
 def deep_learning_introduction():
     """
     深度学习入门概念
@@ -208,16 +215,12 @@ class DeepNetwork:
         # 使用He初始化（适合ReLU）
         self.weights = []
         self.biases = []
-        
+
         for i in range(len(layers) - 1):
-            # He初始化
-            std = math.sqrt(2.0 / layers[i])
-            weights = []
-            for j in range(layers[i + 1]):
-                layer_weights = [random.gauss(0, std) for _ in range(layers[i])]
-                weights.append(layer_weights)
+            # 使用 utils.he_normal 进行权重初始化
+            weights = he_normal((layers[i], layers[i + 1]))
             self.weights.append(weights)
-            
+
             # 偏置初始化为0
             biases = [0.0 for _ in range(layers[i + 1])]
             self.biases.append(biases)
@@ -259,22 +262,9 @@ class DeepNetwork:
         
         return total
     
-    def relu(self, x):
-        """ReLU激活函数"""
-        return max(0, x)
-    
-    def relu_derivative(self, x):
-        """ReLU导数"""
-        return 1 if x > 0 else 0
-    
-    def leaky_relu(self, x, alpha=0.01):
-        """Leaky ReLU激活函数"""
-        return x if x > 0 else alpha * x
-    
-    def leaky_relu_derivative(self, x, alpha=0.01):
-        """Leaky ReLU导数"""
-        return 1 if x > 0 else alpha
-    
+    # 注意: 激活函数现在从 deep_learning.utils 导入
+    # relu, leaky_relu 等函数已在模块顶部导入
+
     def batch_normalize(self, x, layer_idx, training=True, momentum=0.9, eps=1e-8):
         """批归一化"""
         if not self.use_batch_norm:
@@ -347,12 +337,12 @@ class DeepNetwork:
             # 激活函数
             if i < len(self.weights) - 1:  # 隐藏层
                 if self.activation == 'relu':
-                    activated = [self.relu(zi) for zi in z]
+                    activated = [relu(zi) for zi in z]
                 elif self.activation == 'leaky_relu':
-                    activated = [self.leaky_relu(zi) for zi in z]
+                    activated = [leaky_relu(zi) for zi in z]
                 else:
                     activated = z  # 线性
-                
+
                 # Dropout
                 activated = self.dropout(activated, training)
             else:  # 输出层

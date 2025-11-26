@@ -8,6 +8,14 @@
 import random
 import math
 
+# 导入 utils 工具函数
+from deep_learning.utils import (
+    tanh, softmax,
+    normal,
+    matrix_vector_multiply,
+    clip_gradients
+)
+
 def rnn_theory():
     """
     循环神经网络原理解释
@@ -66,18 +74,15 @@ class SimpleRNN:
         self.output_size = output_size
         self.learning_rate = learning_rate
         
-        # 权重矩阵初始化
+        # 使用 utils.normal 进行权重矩阵初始化
         # Wxh: 输入到隐藏状态的权重
-        self.Wxh = [[random.gauss(0, 0.1) for _ in range(hidden_size)] 
-                   for _ in range(input_size)]
-        
+        self.Wxh = normal((input_size, hidden_size), std=0.1)
+
         # Whh: 隐藏状态到隐藏状态的权重（循环权重）
-        self.Whh = [[random.gauss(0, 0.1) for _ in range(hidden_size)] 
-                   for _ in range(hidden_size)]
-        
+        self.Whh = normal((hidden_size, hidden_size), std=0.1)
+
         # Why: 隐藏状态到输出的权重
-        self.Why = [[random.gauss(0, 0.1) for _ in range(output_size)] 
-                   for _ in range(hidden_size)]
+        self.Why = normal((hidden_size, output_size), std=0.1)
         
         # 偏置
         self.bh = [0.1 for _ in range(hidden_size)]
@@ -98,31 +103,20 @@ class SimpleRNN:
         params += self.hidden_size + self.output_size  # 偏置
         return params
     
+    # 注意: tanh, softmax, matrix_vector_multiply 现在从 deep_learning.utils 导入
+    # 为向后兼容性保留包装方法
     def tanh(self, x):
-        """tanh激活函数"""
-        if x > 20:
-            return 1.0
-        elif x < -20:
-            return -1.0
-        exp_2x = math.exp(2 * x)
-        return (exp_2x - 1) / (exp_2x + 1)
-    
+        """tanh激活函数 (使用 utils.tanh)"""
+        return tanh(x)
+
     def softmax(self, x):
-        """softmax函数"""
-        # 数值稳定的softmax
-        max_x = max(x)
-        exp_x = [math.exp(xi - max_x) for xi in x]
-        sum_exp = sum(exp_x)
-        return [ei / sum_exp for ei in exp_x]
-    
+        """softmax函数 (使用 utils.softmax)"""
+        return softmax(x)
+
     def matrix_vector_multiply(self, matrix, vector):
-        """矩阵向量乘法"""
-        result = []
-        for row in matrix:
-            dot_product = sum(m * v for m, v in zip(row, vector))
-            result.append(dot_product)
-        return result
-    
+        """矩阵向量乘法 (使用 utils.matrix_vector_multiply)"""
+        return matrix_vector_multiply(matrix, vector)
+
     def forward(self, inputs, initial_hidden=None):
         """
         前向传播
@@ -139,24 +133,24 @@ class SimpleRNN:
         
         for input_vec in inputs:
             # 计算隐藏状态: h_t = tanh(Wxh * x_t + Whh * h_{t-1} + bh)
-            h_input = self.matrix_vector_multiply(self.Wxh, input_vec)
-            h_hidden = self.matrix_vector_multiply(self.Whh, hidden)
-            
+            h_input = matrix_vector_multiply(self.Wxh, input_vec)
+            h_hidden = matrix_vector_multiply(self.Whh, hidden)
+
             new_hidden = []
             for i in range(self.hidden_size):
                 h_val = h_input[i] + h_hidden[i] + self.bh[i]
-                new_hidden.append(self.tanh(h_val))
+                new_hidden.append(tanh(h_val))
             
             hidden = new_hidden
             hidden_states.append(hidden[:])
             
             # 计算输出: y_t = softmax(Why * h_t + by)
-            y_input = self.matrix_vector_multiply(self.Why, hidden)
+            y_input = matrix_vector_multiply(self.Why, hidden)
             output = []
             for i in range(self.output_size):
                 output.append(y_input[i] + self.by[i])
-            
-            output = self.softmax(output)
+
+            output = softmax(output)
             outputs.append(output)
         
         return outputs, hidden_states

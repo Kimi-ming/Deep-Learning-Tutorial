@@ -8,6 +8,9 @@
 import random
 import math
 
+# 导入 utils 工具函数
+from deep_learning.utils import relu as relu_fn, normal
+
 def cnn_theory():
     """
     卷积神经网络原理解释
@@ -67,15 +70,13 @@ class SimpleCNN:
         
         in_channels = input_shape[2]
         for filter_num, kernel_size, stride in conv_filters:
-            # 初始化卷积核权重
+            # 使用 utils.normal 进行卷积核权重初始化
             weights = []
             for _ in range(filter_num):
                 kernel = []
                 for _ in range(in_channels):
-                    channel_kernel = []
-                    for _ in range(kernel_size):
-                        row = [random.gauss(0, 0.1) for _ in range(kernel_size)]
-                        channel_kernel.append(row)
+                    # 使用 normal 初始化器创建卷积核
+                    channel_kernel = normal((kernel_size, kernel_size), std=0.1)
                     kernel.append(channel_kernel)
                 weights.append(kernel)
             self.conv_weights.append(weights)
@@ -121,10 +122,11 @@ class SimpleCNN:
         
         return output
     
+    # 注意: relu 激活函数现在从 deep_learning.utils 导入
     def relu(self, feature_map):
-        """对特征图应用ReLU激活"""
-        return [[max(0, val) for val in row] for row in feature_map]
-    
+        """对特征图应用ReLU激活 (使用 utils.relu)"""
+        return [[relu_fn(val) for val in row] for row in feature_map]
+
     def max_pooling(self, feature_map, pool_size=2, stride=2):
         """
         最大池化操作
