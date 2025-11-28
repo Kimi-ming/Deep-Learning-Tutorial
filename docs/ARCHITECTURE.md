@@ -342,3 +342,5 @@ advanced/ (依赖 utils, fundamentals, architectures, optimizers)
 - [Python 包结构最佳实践](https://docs.python-guide.org/writing/structure/)
 - [语义化版本](https://semver.org/lang/zh-CN/)
 - [API 设计指南](https://www.python.org/dev/peps/pep-0008/)
+
+> 兼容提示: 根目录 `deep_learning_*.py` 仅为过渡入口，CLI 只发现包内模块，后续版本将移除这些文件。

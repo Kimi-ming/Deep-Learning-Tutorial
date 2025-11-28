@@ -6,6 +6,11 @@
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
 ## [Unreleased]
+### 变更
+- 清理兼容层噪音：CLI 仅发现 `deep_learning/` 包
+- 文档整理：README 精简，新 PR 说明移入 docs/notes/
+- 结构梳理：示例/数据/练习等目录保持现状
+
 
 ### 计划中
 - 模块化重构（Phase 2-5）
