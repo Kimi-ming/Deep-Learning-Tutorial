@@ -1,130 +1,85 @@
 # Deep Learning Tutorial
 
-纯Python实现的深度学习教学项目，不依赖TensorFlow/PyTorch等框架，帮助理解深度学习核心原理。
+纯 Python 的深度学习教学项目（无外部框架），涵盖从感知机到 Transformer 的核心原理与示例。
 
-## 项目特点
+## 特点
+- 纯 Python 实现，便于理解底层计算
+- 新包结构 `deep_learning/`，模块化组织
+- 完整示例与数据加载小样本，配套测试
+- 可视化与性能工具（EarlyStopping、梯度累积）
 
-- **纯Python实现**: 所有核心算法使用纯Python编写，便于理解底层原理
-- **详细中文注释**: 每个模块都包含详细的中文注释和数学公式说明
-- **完整教学体系**: 从感知机到Transformer，覆盖深度学习主要架构
-- **可运行示例**: 所有模块都包含可直接运行的示例代码
-
-## 核心内容
-
-### 基础模块
-- **感知机 (Perceptron)**: 最基础的神经网络单元
-- **多层感知机 (MLP)**: 全连接神经网络实现
-- **激活函数**: Sigmoid, ReLU, Tanh, Softmax
-
-### 深度架构
-- **卷积神经网络 (CNN)**: 卷积层、池化层实现
-- **循环神经网络 (RNN/LSTM/GRU)**: 序列处理架构
-- **Transformer**: 注意力机制和自注意力实现
-
-### 高级主题
-- **优化算法**: SGD, Adam, RMSprop, 学习率调度
-- **生成模型**: GAN (生成对抗网络), VAE (变分自编码器)
-- **神经架构搜索 (NAS)**: 自动化网络架构设计
-
-## 环境要求
-
+## 环境与安装
 - Python >= 3.7
-- NumPy >= 1.19.0 (核心依赖)
-- Matplotlib >= 3.3.0 (可选，用于可视化)
-
-## 快速开始
-
-### 安装依赖
+- NumPy >= 1.19.0（核心）
+- Matplotlib >= 3.3.0（可选，可视化）
 
 ```bash
-# 安装基础依赖
-pip install -r requirements.txt
-
-# 开发环境（包含测试和代码质量工具）
-pip install -r requirements-dev.txt
+pip install -r requirements.txt            # 运行时
+pip install -r requirements-dev.txt        # 开发/测试
 ```
 
-### 运行示例
+## 使用方式
+### 1) CLI 菜单
+```bash
+python main.py          # 交互式选择包内模块
+python main.py --list   # 列出包内模块
+python main.py --help   # 查看帮助
+```
 
+### 2) 代码导入（推荐新包）
 ```python
-# 示例：训练感知机实现 AND 门（新包导入）
 from deep_learning.fundamentals import Perceptron
 
-# 创建感知机
 perceptron = Perceptron(input_size=2)
-
-# 训练数据：AND门
-X = [[0, 0], [0, 1], [1, 0], [1, 1]]
-y = [0, 0, 0, 1]
-
-# 训练
-for epoch in range(100):
-    for xi, yi in zip(X, y):
-        perceptron.train(xi, yi)
-
-# 测试
-for xi, yi in zip(X, y):
-    pred = perceptron.predict(xi)
-    print(f"Input: {xi}, Predicted: {pred}, Actual: {yi}")
+X = [[0,0],[0,1],[1,0],[1,1]]
+y = [0,0,0,1]
+for _ in range(100):
+    perceptron.train(X, y)
+print([perceptron.predict(xi) for xi in X])
 ```
 
-## 项目结构
-
-```
-Deep-Learning-Tutorial/
-├── deep_learning/                   # 新包结构（推荐导入）
-│   ├── fundamentals/                # 基础：Perceptron, MLP (DeepNetwork)
-│   ├── architectures/               # CNN, RNN, Transformer
-│   ├── optimizers/                  # SGD, Adam, 调度器
-│   └── advanced/                    # GAN, VAE, NAS 等
-├── deep_learning_fundamentals.py    # 兼容入口（已迁移到包）
-├── deep_learning_cnn.py             # 兼容入口（已迁移到包）
-├── deep_learning_rnn.py             # 兼容入口（已迁移到包）
-├── deep_learning_advanced.py        # 兼容入口（已迁移到包）
-├── deep_learning_advanced_optimization.py  # 兼容入口（已迁移到包）
-├── deep_learning_advanced_projects.py      # 兼容入口（已迁移到包）
-├── deep_learning_cutting_edge.py    # 前沿技术
-├── deep_learning_math_theory.py     # 数学理论
-├── deep_learning_exercises.py       # 练习题
-├── DEEP_LEARNING_GUIDE.md           # 详细教学指南
-├── requirements.txt                 # 依赖列表
-└── README.md                        # 项目说明
-```
-
-## 开发命令
-
+### 3) 运行示例
 ```bash
-# 格式化代码
-make format
-
-# 运行代码检查
-make lint
-
-# 运行测试
-make test
-
-# 清理缓存
-make clean
+python -m examples.01_perceptron_and_gate
+python -m examples.03_cnn_edge_detection
 ```
 
-## 学习路径
+### 4) 运行测试
+```bash
+pytest -q          # 全部测试
+make test          # 等价
+```
 
-1. **入门**: 从 `deep_learning.fundamentals` 开始，理解感知机和 MLP（可通过兼容文件导入）
-2. **深入**: 学习 CNN/RNN (`deep_learning.architectures`)
-3. **进阶**: 探索 Transformer 和 GAN (`deep_learning.advanced`)
-4. **优化**: 学习各种优化算法 (`deep_learning.optimizers`)
-5. **实践**: 完成 `deep_learning_exercises.py` 中的练习
+## 目录结构（精简）
+```
+deep_learning/              # 主包（推荐）
+├─ fundamentals/            # Perceptron, DeepNetwork, MLP
+├─ architectures/           # CNN, RNN, Transformer 演示
+├─ optimizers/              # SGD/Adam/调度器 + 高级优化
+├─ advanced/                # GAN/Transformer 演示、项目示例
+└─ utils/                   # 激活/损失/初始化/数学/性能/可视化
+examples/                   # 01-05 示例脚本
+datasets/                   # mnist_sample.npz, text_sequences.txt, data_loader.py
+exercises/                  # 练习封装与占位答案
+tests/                      # 覆盖包内模块/示例/数据/性能等
+docs/ARCHITECTURE.md        # 包结构说明
+README.md, TODO.md, CHANGELOG.md
+```
 
-详细教学内容请参考 [DEEP_LEARNING_GUIDE.md](DEEP_LEARNING_GUIDE.md)
+> 说明：根目录的 `deep_learning_*.py` 文件仅为兼容入口，后续版本将移除；请改用 `deep_learning/` 包路径。
+
+## 学习路径（建议）
+1. 基础：`deep_learning.fundamentals`（感知机/MLP）
+2. 架构：`deep_learning.architectures`（CNN/RNN/Transformer 演示）
+3. 优化：`deep_learning.optimizers`（SGD/Adam/调度器）
+4. 高级：`deep_learning.advanced`（GAN/项目演示）
+5. 实践：`examples/`、`exercises/`、`datasets/` 小样本
+
+更多细节参见 [DEEP_LEARNING_GUIDE.md](DEEP_LEARNING_GUIDE.md) 与 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)。
 
 ## 贡献
-
-欢迎提交问题和改进建议！
+- 提交 Issue/PR 前请运行 `make format && make lint && make test`
+- 代码与文档保持一致，优先使用新包导入
 
 ## 许可证
-
-本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
-
-## 致谢
-
-本项目旨在教学目的，帮助理解深度学习原理。生产环境请使用成熟框架如 PyTorch 或 TensorFlow。
+MIT，详见 [LICENSE](LICENSE)。
