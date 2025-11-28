@@ -71,9 +71,9 @@
 ### 预留测试任务 (Phase 4-6 新增功能的测试，仅标记待实现，不创建文件)
 - [x] tests/utils/test_activations.py (Phase 4 已实现: 32个测试覆盖边界、数值稳定性)
 - [x] tests/utils/test_losses.py (Phase 4 已实现: 18个测试覆盖epsilon处理、梯度验证)
-- [ ] tests/utils/test_visualization.py (Phase 6 实现时补充: matplotlib可用/不可用场景)
-- [ ] tests/test_data_loader.py (Phase 6 实现时补充: MNIST/文本加载、形状验证)
-- [ ] tests/test_examples.py (Phase 6 实现时补充: examples/ 下示例能运行不报错)
+- [x] tests/utils/test_visualization.py (Phase 6 已实现: matplotlib可用/不可用场景)
+- [x] tests/test_data_loader.py (Phase 6 已实现: MNIST/文本加载、形状验证)
+- [x] tests/test_examples.py (Phase 6 已实现: examples/ 下示例能运行不报错)
 
 ---
 
