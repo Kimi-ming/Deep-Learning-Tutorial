@@ -3,17 +3,19 @@
 循环神经网络 (RNN) - 专门处理序列数据的深度学习架构
 
 包含：RNN、LSTM、GRU、序列建模、梯度裁剪等概念。
+
+注意: 此文件已作为兼容入口，推荐使用 `from deep_learning.architectures import SimpleRNN`
 """
 
-import random
-import math
+import warnings
+# 转发到新包实现
+from deep_learning.architectures.rnn import *  # noqa: F401,F403
 
-# 导入 utils 工具函数
-from deep_learning.utils import (
-    tanh, softmax,
-    normal,
-    matrix_vector_multiply,
-    clip_gradients
+warnings.warn(
+    "deep_learning_rnn.py 已迁移到 deep_learning/architectures/rnn.py，"
+    "请使用 from deep_learning.architectures import SimpleRNN",
+    DeprecationWarning,
+    stacklevel=2,
 )
 
 def rnn_theory():

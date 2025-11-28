@@ -3,13 +3,20 @@
 卷积神经网络 (CNN) - 专门处理图像数据的深度学习架构
 
 包含：卷积层、池化层、CNN架构、边缘检测、特征提取等概念。
+
+注意: 此文件已作为兼容入口，推荐使用 `from deep_learning.architectures import SimpleCNN`
 """
 
-import random
-import math
+import warnings
+# 转发到新包实现
+from deep_learning.architectures.cnn import *  # noqa: F401,F403
 
-# 导入 utils 工具函数
-from deep_learning.utils import relu as relu_fn, normal
+warnings.warn(
+    "deep_learning_cnn.py 已迁移到 deep_learning/architectures/cnn.py，"
+    "请使用 from deep_learning.architectures import SimpleCNN",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 def cnn_theory():
     """

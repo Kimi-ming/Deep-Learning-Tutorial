@@ -15,7 +15,5 @@ Deep Learning Tutorial Package
 __version__ = '0.1.0'
 __author__ = 'Deep Learning Tutorial Contributors'
 
-# 导入utils包，方便使用
-from . import utils
-
-__all__ = ['utils']
+# 为避免在导入早期引入循环，按需导入子包
+__all__ = ['utils', 'fundamentals', 'architectures', 'optimizers', 'advanced']

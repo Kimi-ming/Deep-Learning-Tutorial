@@ -43,6 +43,8 @@ from .math_ops import (
     cosine_similarity, euclidean_distance,
     moving_average
 )
+from .visualization import plot_loss_curve, plot_accuracy_curve
+from .performance import EarlyStopping, GradientAccumulator
 
 __all__ = [
     # Activations
@@ -69,4 +71,8 @@ __all__ = [
     'normalize_vector', 'batch_normalize',
     'cosine_similarity', 'euclidean_distance',
     'moving_average',
+    # Visualization
+    'plot_loss_curve', 'plot_accuracy_curve',
+    # Performance
+    'EarlyStopping', 'GradientAccumulator',
 ]

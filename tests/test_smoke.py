@@ -124,6 +124,23 @@ class TestMainEntry:
         assert "模块加载失败" not in result.stdout, \
             "不应该有模块加载失败"
 
+    def test_new_package_imports(self):
+        """测试新包结构可以导入"""
+        import deep_learning
+        from deep_learning.fundamentals import Perceptron, MLP, DeepNetwork
+        from deep_learning.architectures import SimpleCNN, SimpleRNN, transformer_architecture
+        from deep_learning.optimizers import sgd_step, adam_update
+
+        assert hasattr(deep_learning, 'fundamentals')
+        assert callable(sgd_step)
+        assert callable(adam_update)
+        assert Perceptron is not None
+        assert MLP is not None
+        assert DeepNetwork is not None
+        assert SimpleCNN is not None
+        assert SimpleRNN is not None
+        assert callable(transformer_architecture)
+
 
 @pytest.mark.smoke
 class TestCoreFunctionality:

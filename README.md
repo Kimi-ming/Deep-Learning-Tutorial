@@ -47,8 +47,8 @@ pip install -r requirements-dev.txt
 ### 运行示例
 
 ```python
-# 示例：训练感知机实现AND门
-from deep_learning_fundamentals import Perceptron
+# 示例：训练感知机实现 AND 门（新包导入）
+from deep_learning.fundamentals import Perceptron
 
 # 创建感知机
 perceptron = Perceptron(input_size=2)
@@ -72,12 +72,17 @@ for xi, yi in zip(X, y):
 
 ```
 Deep-Learning-Tutorial/
-├── deep_learning_fundamentals.py    # 基础：感知机、MLP
-├── deep_learning_cnn.py             # 卷积神经网络
-├── deep_learning_rnn.py             # 循环神经网络
-├── deep_learning_advanced.py        # 高级主题：GAN、Transformer
-├── deep_learning_advanced_optimization.py  # 优化算法
-├── deep_learning_advanced_projects.py      # 高级项目
+├── deep_learning/                   # 新包结构（推荐导入）
+│   ├── fundamentals/                # 基础：Perceptron, MLP (DeepNetwork)
+│   ├── architectures/               # CNN, RNN, Transformer
+│   ├── optimizers/                  # SGD, Adam, 调度器
+│   └── advanced/                    # GAN, VAE, NAS 等
+├── deep_learning_fundamentals.py    # 兼容入口（已迁移到包）
+├── deep_learning_cnn.py             # 兼容入口（已迁移到包）
+├── deep_learning_rnn.py             # 兼容入口（已迁移到包）
+├── deep_learning_advanced.py        # 兼容入口（已迁移到包）
+├── deep_learning_advanced_optimization.py  # 兼容入口（已迁移到包）
+├── deep_learning_advanced_projects.py      # 兼容入口（已迁移到包）
 ├── deep_learning_cutting_edge.py    # 前沿技术
 ├── deep_learning_math_theory.py     # 数学理论
 ├── deep_learning_exercises.py       # 练习题
@@ -104,10 +109,10 @@ make clean
 
 ## 学习路径
 
-1. **入门**: 从 `deep_learning_fundamentals.py` 开始，理解感知机和MLP
-2. **深入**: 学习 CNN (`deep_learning_cnn.py`) 和 RNN (`deep_learning_rnn.py`)
-3. **进阶**: 探索 Transformer 和 GAN (`deep_learning_advanced.py`)
-4. **优化**: 学习各种优化算法 (`deep_learning_advanced_optimization.py`)
+1. **入门**: 从 `deep_learning.fundamentals` 开始，理解感知机和 MLP（可通过兼容文件导入）
+2. **深入**: 学习 CNN/RNN (`deep_learning.architectures`)
+3. **进阶**: 探索 Transformer 和 GAN (`deep_learning.advanced`)
+4. **优化**: 学习各种优化算法 (`deep_learning.optimizers`)
 5. **实践**: 完成 `deep_learning_exercises.py` 中的练习
 
 详细教学内容请参考 [DEEP_LEARNING_GUIDE.md](DEEP_LEARNING_GUIDE.md)

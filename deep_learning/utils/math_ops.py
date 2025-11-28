@@ -74,16 +74,9 @@ def matrix_multiply(A, B):
     if n != n2:
         raise ValueError(f"维度不匹配: A的列数{n} != B的行数{n2}")
 
-    # 初始化结果矩阵
-    C = [[0.0 for _ in range(p)] for _ in range(m)]
-
-    # 计算矩阵乘法
-    for i in range(m):
-        for j in range(p):
-            for k in range(n):
-                C[i][j] += A[i][k] * B[k][j]
-
-    return C
+    # 将 B 转置，减少索引层数，加速纯 Python 循环
+    BT = list(zip(*B))
+    return [[sum(a * b for a, b in zip(row_a, col_b)) for col_b in BT] for row_a in A]
 
 
 def transpose(matrix):

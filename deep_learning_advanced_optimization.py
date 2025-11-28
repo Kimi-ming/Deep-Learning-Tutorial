@@ -3,11 +3,21 @@
 深度学习高级优化算法 - Adam、RMSprop、学习率调度
 
 包含：Adam优化器、RMSprop、学习率衰减、批归一化、Dropout等优化技术。
+
+注意: 此文件已作为兼容入口，推荐使用 `deep_learning.optimizers` 包。
 """
 
-import random
-import math
-import copy
+import warnings
+
+# 转发到新包实现
+from deep_learning.optimizers.advanced_optimization import *  # noqa: F401,F403
+
+warnings.warn(
+    "deep_learning_advanced_optimization.py 已迁移到 deep_learning/optimizers/ 包，"
+    "请使用 deep_learning.optimizers 下的对应模块",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 def advanced_optimization_intro():
     """高级优化算法介绍"""

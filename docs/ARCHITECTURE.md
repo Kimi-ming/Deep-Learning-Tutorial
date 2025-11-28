@@ -18,7 +18,8 @@ Deep-Learning-Tutorial/
 │   ├── fundamentals/          # 基础模块
 │   │   ├── __init__.py
 │   │   ├── perceptron.py      # 感知机
-│   │   └── mlp.py             # 多层感知机
+│   │   ├── deep_network.py    # 深度网络 (迁移自 deep_learning_fundamentals.py)
+│   │   └── mlp.py             # 多层感知机 (继承 DeepNetwork)
 │   ├── architectures/         # 深度学习架构
 │   │   ├── __init__.py
 │   │   ├── cnn.py             # 卷积神经网络
@@ -28,12 +29,15 @@ Deep-Learning-Tutorial/
 │   │   ├── __init__.py
 │   │   ├── sgd.py             # 随机梯度下降
 │   │   ├── adam.py            # Adam优化器
-│   │   └── schedulers.py      # 学习率调度器
+│   │   ├── schedulers.py      # 学习率调度器
+│   │   └── advanced_optimization.py  # 高级优化（迁移自 deep_learning_advanced_optimization.py）
 │   └── advanced/              # 高级主题
 │       ├── __init__.py
-│       ├── gan.py             # 生成对抗网络
-│       ├── vae.py             # 变分自编码器
-│       └── nas.py             # 神经架构搜索
+│       ├── gan.py             # 生成对抗网络（占位/迁移中）
+│       ├── vae.py             # 变分自编码器（占位/迁移中）
+│       ├── nas.py             # 神经架构搜索（占位/迁移中）
+│       ├── core.py            # 高级主题核心（迁移自 deep_learning_advanced.py）
+│       └── projects.py        # 高级项目（迁移自 deep_learning_advanced_projects.py）
 ├── tests/                     # 测试目录
 │   ├── __init__.py
 │   ├── test_smoke.py          # 冒烟测试
@@ -64,7 +68,7 @@ Deep-Learning-Tutorial/
 ├── deep_learning_fundamentals.py    # [已废弃] 迁移到 deep_learning/fundamentals/
 ├── deep_learning_cnn.py              # [已废弃] 迁移到 deep_learning/architectures/
 ├── deep_learning_rnn.py              # [已废弃] 迁移到 deep_learning/architectures/
-├── deep_learning_advanced.py         # [已废弃] 迁移到 deep_learning/advanced/
+├── deep_learning_advanced.py         # [已废弃] 迁移到 deep_learning/advanced/core.py
 └── ...                        # 其他已废弃文件
 ```
 

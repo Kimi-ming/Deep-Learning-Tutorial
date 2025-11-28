@@ -3,17 +3,32 @@
 深度学习基础教程 - 从神经网络到深度学习
 
 包含：感知机、多层感知机、激活函数、损失函数、优化算法等基础概念。
+
+注意: 此文件已作为兼容入口，推荐使用 `from deep_learning.fundamentals import MLP, DeepNetwork`
 """
 
 import random
 import math
 import json
+import warnings
 
 # 导入 utils 工具函数
 from deep_learning.utils import (
     relu, relu_derivative,
     leaky_relu,
     he_normal
+)
+
+# 新包迁移引用
+from deep_learning.fundamentals.deep_network import DeepNetwork
+from deep_learning.fundamentals.perceptron import Perceptron
+
+# 兼容提示
+warnings.warn(
+    "deep_learning_fundamentals.py 将迁移到 deep_learning/fundamentals/ 包，"
+    "请使用 from deep_learning.fundamentals import MLP, DeepNetwork",
+    DeprecationWarning,
+    stacklevel=2,
 )
 
 def deep_learning_introduction():

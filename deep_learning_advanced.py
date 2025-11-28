@@ -3,11 +3,20 @@
 深度学习高级主题 - GAN、Transformer、强化学习、元学习
 
 包含：生成对抗网络、Transformer架构、深度强化学习、元学习等前沿技术。
+
+注意: 此文件已作为兼容入口，推荐使用 `deep_learning.advanced` 包。
 """
 
-import random
-import math
-import json
+import warnings
+# 转发到新包实现
+from deep_learning.advanced.core import *  # noqa: F401,F403
+
+warnings.warn(
+    "deep_learning_advanced.py 已迁移到 deep_learning/advanced/core.py，"
+    "请使用 deep_learning.advanced 下的对应模块",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 def advanced_topics_introduction():
     """高级主题介绍"""
