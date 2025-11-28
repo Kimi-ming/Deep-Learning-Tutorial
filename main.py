@@ -21,69 +21,25 @@ def discover_modules():
     modules = []
     seen = set()
 
-    # 查找所有 deep_learning_*.py 文件
-    pattern = "deep_learning_*.py"
-    files = sorted(glob.glob(pattern))
-
-    for file_path in files:
-        module_name = os.path.splitext(file_path)[0]
-
-        # 跳过练习文件，它们有单独的处理
-        if "exercises" in module_name:
-            continue
-
-        # 尝试导入模块获取描述
-        try:
-            module = importlib.import_module(module_name)
-            # 安全处理 __doc__，避免 None.strip() 异常
-            doc = module.__doc__ if hasattr(module, '__doc__') and module.__doc__ else ''
-            description = doc.strip().split('\n')[0] if doc.strip() else "无描述"
-        except Exception as e:
-            # 输出真实异常以便调试
-            description = f"模块加载失败: {type(e).__name__}"
-
-        modules.append((module_name, file_path, description))
-        seen.add(module_name)
-
-    # 添加练习模块
-    if os.path.exists("deep_learning_exercises.py"):
-        modules.append(("deep_learning_exercises", "deep_learning_exercises.py", "深度学习练习题"))
-        seen.add("deep_learning_exercises")
-
-    # 发现 deep_learning/ 包下的子模块
+    # 仅发现 deep_learning 包下的子模块，避免加载已弃用的根目录脚本
     try:
         import pkgutil
         import deep_learning
 
-        package_roots = [
-            "deep_learning.fundamentals",
-            "deep_learning.architectures",
-            "deep_learning.optimizers",
-            "deep_learning.advanced",
-        ]
-
-        for pkg_name in package_roots:
-            try:
-                pkg = importlib.import_module(pkg_name)
-            except Exception:
+        for info in pkgutil.walk_packages(deep_learning.__path__, prefix="deep_learning."):
+            full_name = info.name
+            if full_name in seen:
                 continue
+            try:
+                module = importlib.import_module(full_name)
+                doc = module.__doc__ if hasattr(module, '__doc__') and module.__doc__ else ''
+                description = doc.strip().split('\n')[0] if doc.strip() else "无描述"
+            except Exception as e:
+                description = f"模块加载失败: {type(e).__name__}"
 
-            for info in pkgutil.iter_modules(pkg.__path__, prefix=f"{pkg_name}."):
-                full_name = info.name
-                if full_name in seen:
-                    continue
-
-                try:
-                    module = importlib.import_module(full_name)
-                    doc = module.__doc__ if hasattr(module, '__doc__') and module.__doc__ else ''
-                    description = doc.strip().split('\n')[0] if doc.strip() else "无描述"
-                except Exception as e:
-                    description = f"模块加载失败: {type(e).__name__}"
-
-                modules.append((full_name, full_name.replace('.', '/') + ".py", description))
-                seen.add(full_name)
+            modules.append((full_name, full_name.replace('.', '/') + ".py", description))
+            seen.add(full_name)
     except Exception:
-        # 包发现失败不阻塞 CLI
         pass
 
     return modules

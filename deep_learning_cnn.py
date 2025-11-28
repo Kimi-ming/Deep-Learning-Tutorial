@@ -11,7 +11,6 @@ import warnings
 # 转发到新包实现
 from deep_learning.architectures.cnn import *  # noqa: F401,F403
 
-warnings.warn(
     "deep_learning_cnn.py 已迁移到 deep_learning/architectures/cnn.py，"
     "请使用 from deep_learning.architectures import SimpleCNN",
     DeprecationWarning,

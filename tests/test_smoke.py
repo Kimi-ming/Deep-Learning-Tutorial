@@ -24,57 +24,44 @@ class TestModuleImports:
     """测试所有教学模块可以成功导入"""
 
     def test_discover_modules(self):
-        """动态发现所有教学模块"""
-        root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        os.chdir(root_dir)
+        """动态发现包内模块"""
+        import pkgutil
+        import deep_learning
 
-        # 发现所有 deep_learning_*.py 文件
-        module_files = glob.glob("deep_learning_*.py")
-        assert len(module_files) > 0, "应该至少有一个教学模块"
-
-        print(f"\n发现 {len(module_files)} 个教学模块")
+        modules = [info.name for info in pkgutil.walk_packages(deep_learning.__path__, prefix="deep_learning.")]
+        assert len(modules) > 0, "应该至少有一个教学模块"
 
     def test_import_all_modules(self):
-        """测试所有模块可以成功导入"""
-        root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        os.chdir(root_dir)
+        """测试包内模块可以成功导入"""
+        import pkgutil
+        import deep_learning
 
-        module_files = glob.glob("deep_learning_*.py")
-        failed_imports = []
-
-        for file_path in module_files:
-            module_name = file_path[:-3]  # 移除 .py
+        failed = []
+        for info in pkgutil.walk_packages(deep_learning.__path__, prefix="deep_learning."):
+            name = info.name
             try:
-                module = importlib.import_module(module_name)
-                assert module is not None
-                print(f"✓ {module_name}")
+                importlib.import_module(name)
+                print(f"✓ {name}")
             except Exception as e:
-                failed_imports.append((module_name, str(e)))
-                print(f"✗ {module_name}: {e}")
-
-        assert len(failed_imports) == 0, f"导入失败的模块: {failed_imports}"
+                failed.append((name, str(e)))
+                print(f"✗ {name}: {e}")
+        assert not failed, f"导入失败的模块: {failed}"
 
     def test_modules_have_docstrings(self):
-        """测试主要教学模块都有文档字符串"""
-        root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        os.chdir(root_dir)
+        """测试包内模块都有文档字符串"""
+        import pkgutil
+        import deep_learning
 
-        # 仅检查非练习模块
-        module_files = [f for f in glob.glob("deep_learning_*.py")
-                       if 'exercises' not in f]
         modules_without_docs = []
-
-        for file_path in module_files:
-            module_name = file_path[:-3]
+        for info in pkgutil.walk_packages(deep_learning.__path__, prefix="deep_learning."):
+            name = info.name
             try:
-                module = importlib.import_module(module_name)
+                module = importlib.import_module(name)
                 if not module.__doc__ or not module.__doc__.strip():
-                    modules_without_docs.append(module_name)
+                    modules_without_docs.append(name)
             except Exception:
                 pass
-
-        assert len(modules_without_docs) == 0, \
-            f"缺少文档字符串的模块: {modules_without_docs}"
+        assert len(modules_without_docs) == 0, f"缺少文档字符串的模块: {modules_without_docs}"
 
 
 @pytest.mark.smoke
@@ -148,7 +135,7 @@ class TestCoreFunctionality:
 
     def test_deep_network(self):
         """测试深度网络可以创建"""
-        from deep_learning_fundamentals import DeepNetwork
+        from deep_learning.fundamentals import DeepNetwork
 
         # 创建网络
         network = DeepNetwork(layers=[2, 3, 1], learning_rate=0.1)
@@ -160,7 +147,7 @@ class TestCoreFunctionality:
 
     def test_simple_cnn(self):
         """测试简单CNN可以创建"""
-        from deep_learning_cnn import SimpleCNN
+        from deep_learning.architectures import SimpleCNN
 
         # 创建 CNN
         cnn = SimpleCNN(
@@ -176,7 +163,7 @@ class TestCoreFunctionality:
 
     def test_simple_rnn(self):
         """测试简单RNN可以创建"""
-        from deep_learning_rnn import SimpleRNN
+        from deep_learning.architectures import SimpleRNN
 
         # 创建 RNN
         rnn = SimpleRNN(

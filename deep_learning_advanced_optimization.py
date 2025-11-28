@@ -12,7 +12,6 @@ import warnings
 # 转发到新包实现
 from deep_learning.optimizers.advanced_optimization import *  # noqa: F401,F403
 
-warnings.warn(
     "deep_learning_advanced_optimization.py 已迁移到 deep_learning/optimizers/ 包，"
     "请使用 deep_learning.optimizers 下的对应模块",
     DeprecationWarning,

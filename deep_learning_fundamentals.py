@@ -24,7 +24,6 @@ from deep_learning.fundamentals.deep_network import DeepNetwork
 from deep_learning.fundamentals.perceptron import Perceptron
 
 # 兼容提示
-warnings.warn(
     "deep_learning_fundamentals.py 将迁移到 deep_learning/fundamentals/ 包，"
     "请使用 from deep_learning.fundamentals import MLP, DeepNetwork",
     DeprecationWarning,

@@ -11,7 +11,6 @@ import warnings
 # 转发到新包实现
 from deep_learning.advanced.projects import *  # noqa: F401,F403
 
-warnings.warn(
     "deep_learning_advanced_projects.py 已迁移到 deep_learning/advanced/projects.py，"
     "请使用 deep_learning.advanced 下的对应模块",
     DeprecationWarning,
