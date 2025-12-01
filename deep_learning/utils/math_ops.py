@@ -74,9 +74,72 @@ def matrix_multiply(A, B):
     if n != n2:
         raise ValueError(f"维度不匹配: A的列数{n} != B的行数{n2}")
 
-    # 将 B 转置，减少索引层数，加速纯 Python 循环
-    BT = list(zip(*B))
-    return [[sum(a * b for a, b in zip(row_a, col_b)) for col_b in BT] for row_a in A]
+    # 预先转置 B 并转为列表，减少属性查找开销
+    columns = [list(col) for col in zip(*B)]
+
+    result = []
+    append_row = result.append
+
+    for row_a in A:
+        row_out = []
+        row_append = row_out.append
+        for col_b in columns:
+            acc = 0.0
+            # 显式循环比生成器 sum 更快，便于在纯 Python 下减少开销
+            for idx in range(n):
+                acc += row_a[idx] * col_b[idx]
+            row_append(acc)
+        append_row(row_out)
+
+    return result
+
+
+def conv2d_single_channel(input_map, kernel, bias=0.0, stride=1):
+    """
+    单通道 2D 卷积 (valid 模式) 的纯 Python 优化实现。
+
+    通过预先创建输出列表、缓存索引范围，减少重复计算和属性查找。
+
+    Args:
+        input_map: 输入特征图，形状 (H, W)
+        kernel: 卷积核，形状 (Kh, Kw)
+        bias: 偏置项
+        stride: 步长（正整数）
+
+    Returns:
+        卷积结果，形状 ((H-Kh)//stride + 1, (W-Kw)//stride + 1)
+    """
+    if stride <= 0:
+        raise ValueError("stride 必须为正整数")
+
+    input_h, input_w = len(input_map), len(input_map[0])
+    kernel_h, kernel_w = len(kernel), len(kernel[0])
+
+    if kernel_h > input_h or kernel_w > input_w:
+        raise ValueError("卷积核尺寸不可超过输入尺寸")
+
+    output_h = (input_h - kernel_h) // stride + 1
+    output_w = (input_w - kernel_w) // stride + 1
+
+    output = [[0.0] * output_w for _ in range(output_h)]
+
+    range_kh = range(kernel_h)
+    range_kw = range(kernel_w)
+
+    for out_i in range(output_h):
+        base_i = out_i * stride
+        out_row = output[out_i]
+        for out_j in range(output_w):
+            base_j = out_j * stride
+            acc = bias
+            for ki in range_kh:
+                in_row = input_map[base_i + ki]
+                k_row = kernel[ki]
+                for kj in range_kw:
+                    acc += in_row[base_j + kj] * k_row[kj]
+            out_row[out_j] = acc
+
+    return output
 
 
 def transpose(matrix):

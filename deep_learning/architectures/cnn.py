@@ -12,7 +12,7 @@ import math
 import warnings
 
 # 导入 utils 工具函数
-from deep_learning.utils import relu as relu_fn, normal
+from deep_learning.utils import relu as relu_fn, normal, conv2d_single_channel
 
 warnings.warn(
     "deep_learning_cnn.py 将迁移到 deep_learning/architectures/ 包，"
@@ -133,28 +133,7 @@ class SimpleCNN:
         kernel: 卷积核 (kernel_height, kernel_width)
         stride: 步长
         """
-        input_h, input_w = len(input_map), len(input_map[0])
-        kernel_h, kernel_w = len(kernel), len(kernel[0])
-        
-        output_h = (input_h - kernel_h) // stride + 1
-        output_w = (input_w - kernel_w) // stride + 1
-        
-        output = []
-        for i in range(output_h):
-            row = []
-            base_i = i * stride
-            for j in range(output_w):
-                conv_sum = bias
-                base_j = j * stride
-                # 展开两层循环，减少属性查找
-                for ki, krow in enumerate(kernel):
-                    in_row = input_map[base_i + ki]
-                    for kj, kval in enumerate(krow):
-                        conv_sum += in_row[base_j + kj] * kval
-                row.append(conv_sum)
-            output.append(row)
-        
-        return output
+        return conv2d_single_channel(input_map, kernel, bias=bias, stride=stride)
     
     # 注意: relu 激活函数现在从 deep_learning.utils 导入
     def relu(self, feature_map):

@@ -41,7 +41,7 @@ from .math_ops import (
     clip_gradients, clip_by_value,
     normalize_vector, batch_normalize,
     cosine_similarity, euclidean_distance,
-    moving_average
+    moving_average, conv2d_single_channel
 )
 from .visualization import plot_loss_curve, plot_accuracy_curve
 from .performance import EarlyStopping, GradientAccumulator
@@ -70,7 +70,7 @@ __all__ = [
     'clip_gradients', 'clip_by_value',
     'normalize_vector', 'batch_normalize',
     'cosine_similarity', 'euclidean_distance',
-    'moving_average',
+    'moving_average', 'conv2d_single_channel',
     # Visualization
     'plot_loss_curve', 'plot_accuracy_curve',
     # Performance
