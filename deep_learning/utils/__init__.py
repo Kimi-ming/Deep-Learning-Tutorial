@@ -46,6 +46,12 @@ from .math_ops import (
 from .visualization import plot_loss_curve, plot_accuracy_curve
 from .performance import EarlyStopping, GradientAccumulator
 from .interactive import LearningProgress, Quiz, HintSystem
+from ._numpy_backend import (
+    is_available as numpy_available,
+    matmul as numpy_matmul,
+    conv2d_single_channel as numpy_conv2d_single_channel,
+)
+from .serialization import save_model, load_model
 
 __all__ = [
     # Activations
@@ -78,4 +84,8 @@ __all__ = [
     'EarlyStopping', 'GradientAccumulator',
     # Interactive
     'LearningProgress', 'Quiz', 'HintSystem',
+    # NumPy backend
+    'numpy_available', 'numpy_matmul', 'numpy_conv2d_single_channel',
+    # Serialization
+    'save_model', 'load_model',
 ]

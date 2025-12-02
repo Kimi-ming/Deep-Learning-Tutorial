@@ -9,6 +9,7 @@ English version: see `i18n/README_en.md`.
 - 新包结构 `deep_learning/`，模块化组织
 - 完整示例与数据加载小样本，配套测试
 - 可视化与性能工具（EarlyStopping、梯度累积）
+- 可选 NumPy 加速后端 + 模型保存/加载工具（pickle/JSON）
 
 ## 环境与安装
 - Python >= 3.7
