@@ -11,3 +11,6 @@ ruff>=0.1.0
 
 # Type checking (optional)
 mypy>=0.990
+
+# Docs
+sphinx>=7.0.0

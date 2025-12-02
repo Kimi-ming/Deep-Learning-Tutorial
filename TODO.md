@@ -232,12 +232,10 @@
 - [x] **决策**: 需要云平台部署指南 → 已编写 docs/DEPLOY_CLOUD.md (AWS/GCP/Azure)
 
 ### M8: 文档增强
-- [ ] **决策**: 是否生成 API 文档?
-  - 如是 → 配置 Sphinx + 生成文档 + 托管到 Read the Docs
-  - 如否 → 仅保留 docstring
+- [x] **决策**: 生成 API 文档 → 配置 Sphinx (docs/conf.py) + api/index rst + make docs
 - [ ] **决策**: 是否需要在线文档站点?
-  - 如是 → 配置 GitHub Pages + mkdocs/sphinx
-  - 如否 → 仅保留 Markdown 文档
+  - 如是 → 配置 GitHub Pages + sphinx/mkdocs 部署
+  - 如否 → 仅保留本地生成
 
 ### M9: 高级训练特性
 - [ ] **决策**: 是否需要分布式训练示例?

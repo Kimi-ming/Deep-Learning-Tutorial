@@ -10,6 +10,7 @@ English version: see `i18n/README_en.md`.
 - 完整示例与数据加载小样本，配套测试
 - 可视化与性能工具（EarlyStopping、梯度累积）
 - 可选 NumPy 加速后端 + 模型保存/加载工具（pickle/JSON）
+- 文档：Sphinx API 文档（`make docs`），Docker 支持、云部署指南
 
 ## 环境与安装
 - Python >= 3.7
@@ -81,6 +82,7 @@ README.md, TODO.md, CHANGELOG.md
 5. 实践：`examples/`、`exercises/`、`datasets/` 小样本
 
 更多细节参见 [DEEP_LEARNING_GUIDE.md](DEEP_LEARNING_GUIDE.md) 与 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)。
+API 文档见 Sphinx 构建输出（`make docs`）或在 docs/_build 下查看。
 
 ## 贡献
 - 提交 Issue/PR 前请运行 `make format && make lint && make test`

@@ -29,6 +29,10 @@ test:
 	@echo "Running tests with pytest..."
 	pytest
 
+docs:
+	@echo "Building Sphinx docs..."
+	sphinx-build -b html docs docs/_build
+
 clean:
 	@echo "Cleaning cache and build files..."
 	find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
