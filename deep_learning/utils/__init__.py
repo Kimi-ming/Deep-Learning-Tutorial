@@ -45,6 +45,7 @@ from .math_ops import (
 )
 from .visualization import plot_loss_curve, plot_accuracy_curve
 from .performance import EarlyStopping, GradientAccumulator
+from .interactive import LearningProgress, Quiz, HintSystem
 
 __all__ = [
     # Activations
@@ -75,4 +76,6 @@ __all__ = [
     'plot_loss_curve', 'plot_accuracy_curve',
     # Performance
     'EarlyStopping', 'GradientAccumulator',
+    # Interactive
+    'LearningProgress', 'Quiz', 'HintSystem',
 ]
