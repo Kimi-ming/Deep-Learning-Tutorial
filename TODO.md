@@ -218,9 +218,7 @@
 - [x] **决策**: 需要英文版文档 → 已创建 i18n/README_en.md + 补充关键 docstring 英文描述
 
 ### M4: 打包发布
-- [ ] **决策**: 是否发布到 PyPI?
-  - 如是 → 创建 setup.py + MANIFEST.in + 配置 dl-tutorial 入口 + 测试 pip install + 发布
-  - 如否 → 仅支持 git clone 安装
+- [x] **决策**: 发布到 PyPI（可选，当前先完成打包脚手架）→ 已创建 setup.py + MANIFEST.in + 配置 dl-tutorial 入口（支持 `pip install .` 安装/CLI 运行）
 
 ### M5: CI/CD
 - [ ] **决策**: 是否需要 GitHub Actions?
@@ -331,6 +329,7 @@
 | 2025-12-01 | 完成: M3 国际化 (i18n/README_en.md + 关键 docstring 英文化) | M3 |
 | 2025-12-01 | 完成: M2 Notebook 支持 (notebooks/ 目录 + 3 个示例 .ipynb) | M2 |
 | 2025-12-01 | 完成: M1 交互式功能（LearningProgress/Quiz/HintSystem + 测试） | M1 |
+| 2025-12-01 | 完成: M4 打包脚手架 (setup.py + MANIFEST.in + console_scripts dl-tutorial) | M4 |
 | 2025-12-01 | 完成: Phase 7 性能优化（矩阵乘法与卷积关键循环优化 + 补充测试 + 进度表校准至 84/84） | Phase 7 |
 | 2024-11-26 | 完成: Phase 4 代码重构 (utils包+重构3个核心模块, 减少45行重复代码) | Phase 4 |
 | 2024-11-26 | 完成: Phase 4 公共工具提取 (4个模块 + 50个新测试, 83个测试全部通过) | Phase 4 |

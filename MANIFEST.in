@@ -1,0 +1,9 @@
+include README.md
+include LICENSE
+recursive-include deep_learning *.py
+recursive-include datasets *
+recursive-include examples *.py
+recursive-include exercises *.py
+recursive-include docs *.md
+recursive-include i18n *.md
+recursive-include notebooks *.ipynb

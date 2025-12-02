@@ -15,10 +15,8 @@ English version: see `i18n/README_en.md`.
 - NumPy >= 1.19.0（核心）
 - Matplotlib >= 3.3.0（可选，可视化）
 
-```bash
-pip install -r requirements.txt            # 运行时
-pip install -r requirements-dev.txt        # 开发/测试
-```
+- `pip install .` 或 `pip install -r requirements.txt`（运行时）
+- `pip install -r requirements-dev.txt`（开发/测试）
 
 ## 使用方式
 ### 1) CLI 菜单
@@ -26,6 +24,8 @@ pip install -r requirements-dev.txt        # 开发/测试
 python main.py          # 交互式选择包内模块
 python main.py --list   # 列出包内模块
 python main.py --help   # 查看帮助
+# 安装后可直接使用
+dl-tutorial             # 等价于 python -m main
 ```
 
 ### 2) 代码导入（推荐新包）
