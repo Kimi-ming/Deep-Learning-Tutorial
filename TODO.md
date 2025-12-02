@@ -215,9 +215,7 @@
 - [x] **决策**: 转换为 Jupyter Notebooks → 已创建 notebooks/ + 核心教学模块示例 .ipynb + 简单交互演示
 
 ### M3: 国际化
-- [ ] **决策**: 是否需要英文版文档?
-  - 如是 → 创建 i18n/ + 翻译 README_en.md + 翻译关键docstring
-  - 如否 → 仅保留中文版
+- [x] **决策**: 需要英文版文档 → 已创建 i18n/README_en.md + 补充关键 docstring 英文描述
 
 ### M4: 打包发布
 - [ ] **决策**: 是否发布到 PyPI?
@@ -330,6 +328,7 @@
 
 | 日期 | 变更 | 影响 Phase |
 |------|------|-----------|
+| 2025-12-01 | 完成: M3 国际化 (i18n/README_en.md + 关键 docstring 英文化) | M3 |
 | 2025-12-01 | 完成: M2 Notebook 支持 (notebooks/ 目录 + 3 个示例 .ipynb) | M2 |
 | 2025-12-01 | 完成: M1 交互式功能（LearningProgress/Quiz/HintSystem + 测试） | M1 |
 | 2025-12-01 | 完成: Phase 7 性能优化（矩阵乘法与卷积关键循环优化 + 补充测试 + 进度表校准至 84/84） | Phase 7 |

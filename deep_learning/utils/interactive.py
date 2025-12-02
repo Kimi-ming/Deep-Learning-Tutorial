@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-交互式学习工具
+交互式学习工具 / Interactive learning helpers
 
 提供:
 - LearningProgress: 进度跟踪与持久化 (.progress.json)
 - Quiz: 题库加载与评分
 - HintSystem: 分级提示管理（默认三层）
+
+English:
+- LearningProgress: track progress with JSON persistence
+- Quiz: load questions and grade responses
+- HintSystem: multi-level hints (3 levels by default)
 """
 
 from __future__ import annotations
@@ -17,9 +22,9 @@ from typing import Dict, List, Optional, Sequence, Union
 
 class LearningProgress:
     """
-    简单的进度追踪器
+    简单的进度追踪器 / Simple progress tracker
 
-    数据结构:
+    数据结构 / Data layout:
     {
         "tasks": {
             "task_id": {"completed": int, "total": int}
@@ -85,9 +90,9 @@ class LearningProgress:
 
 class Quiz:
     """
-    简单测验系统
+    简单测验系统 / Lightweight quiz system
 
-    题目格式:
+    题目格式 / Question format:
     {
         "id": "q1",
         "question": "1+1=?",
@@ -152,7 +157,7 @@ class Quiz:
 
 class HintSystem:
     """
-    分级提示系统（默认三级）
+    分级提示系统（默认三级）/ Multi-level hint system (3 levels by default)
     """
 
     def __init__(self, hints: Sequence[str]):

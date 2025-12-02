@@ -2,6 +2,8 @@
 
 纯 Python 的深度学习教学项目（无外部框架），涵盖从感知机到 Transformer 的核心原理与示例。
 
+English version: see `i18n/README_en.md`.
+
 ## 特点
 - 纯 Python 实现，便于理解底层计算
 - 新包结构 `deep_learning/`，模块化组织
