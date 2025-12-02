@@ -18,6 +18,7 @@ English version: see `i18n/README_en.md`.
 
 - `pip install .` 或 `pip install -r requirements.txt`（运行时）
 - `pip install -r requirements-dev.txt`（开发/测试）
+- 容器：`docker build -t dl-tutorial .` 或 `docker-compose run tutorial`
 
 ## 使用方式
 ### 1) CLI 菜单
@@ -27,6 +28,7 @@ python main.py --list   # 列出包内模块
 python main.py --help   # 查看帮助
 # 安装后可直接使用
 dl-tutorial             # 等价于 python -m main
+docker-compose run tutorial  # 容器方式列出模块
 ```
 
 ### 2) 代码导入（推荐新包）

@@ -228,12 +228,8 @@
 - [x] **决策**: 需要模型保存/加载 → 添加 save_model/load_model (pickle/JSON) + 测试
 
 ### M7: Docker/云平台
-- [ ] **决策**: 是否需要 Docker 支持?
-  - 如是 → 创建 Dockerfile + docker-compose.yml + 镜像构建文档
-  - 如否 → 跳过
-- [ ] **决策**: 是否需要云平台部署指南?
-  - 如是 → 编写 AWS/GCP/Azure 部署文档
-  - 如否 → 跳过
+- [x] **决策**: 需要 Docker 支持 → 已添加 Dockerfile + docker-compose.yml（默认运行 main.py --list/--help）
+- [x] **决策**: 需要云平台部署指南 → 已编写 docs/DEPLOY_CLOUD.md (AWS/GCP/Azure)
 
 ### M8: 文档增强
 - [ ] **决策**: 是否生成 API 文档?
@@ -326,6 +322,7 @@
 | 2025-12-01 | 完成: M4 打包脚手架 (setup.py + MANIFEST.in + console_scripts dl-tutorial) | M4 |
 | 2025-12-01 | 完成: M5 CI/CD (GitHub Actions pytest 工作流：Python 3.8/3.11) | M5 |
 | 2025-12-01 | 完成: M6 性能增强（NumPy 加速后端 + 保存/加载工具与测试） | M6 |
+| 2025-12-01 | 完成: M7 Docker/云部署（Dockerfile + docker-compose.yml + DEPLOY_CLOUD.md） | M7 |
 | 2025-12-01 | 完成: Phase 7 性能优化（矩阵乘法与卷积关键循环优化 + 补充测试 + 进度表校准至 84/84） | Phase 7 |
 | 2024-11-26 | 完成: Phase 4 代码重构 (utils包+重构3个核心模块, 减少45行重复代码) | Phase 4 |
 | 2024-11-26 | 完成: Phase 4 公共工具提取 (4个模块 + 50个新测试, 83个测试全部通过) | Phase 4 |
