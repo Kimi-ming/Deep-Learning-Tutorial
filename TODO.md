@@ -221,9 +221,7 @@
 - [x] **决策**: 发布到 PyPI（可选，当前先完成打包脚手架）→ 已创建 setup.py + MANIFEST.in + 配置 dl-tutorial 入口（支持 `pip install .` 安装/CLI 运行）
 
 ### M5: CI/CD
-- [ ] **决策**: 是否需要 GitHub Actions?
-  - 如是 → .github/workflows/tests.yml (Python 3.7-3.11) + 代码覆盖率 (codecov) + badge
-  - 如否 → 仅本地测试
+- [x] **决策**: 需要 GitHub Actions → 已添加 .github/workflows/tests.yml (Python 3.8 & 3.11) 运行 pytest
 
 ### M6: 性能增强
 - [ ] **决策**: 是否需要 NumPy 加速版本?
@@ -330,6 +328,7 @@
 | 2025-12-01 | 完成: M2 Notebook 支持 (notebooks/ 目录 + 3 个示例 .ipynb) | M2 |
 | 2025-12-01 | 完成: M1 交互式功能（LearningProgress/Quiz/HintSystem + 测试） | M1 |
 | 2025-12-01 | 完成: M4 打包脚手架 (setup.py + MANIFEST.in + console_scripts dl-tutorial) | M4 |
+| 2025-12-01 | 完成: M5 CI/CD (GitHub Actions pytest 工作流：Python 3.8/3.11) | M5 |
 | 2025-12-01 | 完成: Phase 7 性能优化（矩阵乘法与卷积关键循环优化 + 补充测试 + 进度表校准至 84/84） | Phase 7 |
 | 2024-11-26 | 完成: Phase 4 代码重构 (utils包+重构3个核心模块, 减少45行重复代码) | Phase 4 |
 | 2024-11-26 | 完成: Phase 4 公共工具提取 (4个模块 + 50个新测试, 83个测试全部通过) | Phase 4 |
